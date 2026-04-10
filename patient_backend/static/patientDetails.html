@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .charts-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 12px;
+        }
+        .charts-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .chart-box {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        @media (max-width: 600px) {
+            .chart-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body class="details-body">
+
+<div class="details-container">
+
+    <!-- PROFILE -->
+    <div class="profile-section">
+        <img id="pImg" class="profile-photo">
+        <h2 id="pName"></h2>
+        <p id="pAge"></p>
+        <p id="pDob"></p>
+        <p id="pGender"></p>
+    </div>
+
+    <!-- CURRENT VITALS -->
+    <div class="vitals-section">
+        <h3><i class="fa-solid fa-heart-pulse"></i> Vital Information</h3>
+        <p><i class="fa-solid fa-heart"></i>            Heart Rate:     <span id="pHR"></span></p>
+        <p><i class="fa-solid fa-stethoscope"></i>      Blood Pressure: <span id="pBP"></span></p>
+        <p><i class="fa-solid fa-wind"></i>             Oxygen Level:   <span id="pOxy"></span></p>
+        <p><i class="fa-solid fa-temperature-half"></i> Temperature:    <span id="pTemp"></span></p>
+    </div>
+
+    <!-- MEDICAL HISTORY -->
+    <div class="history-section">
+        <h3><i class="fa-solid fa-notes-medical"></i> Medical History</h3>
+        <ul id="pHistory"></ul>
+    </div>
+
+    <!-- HEALTH REPORT GRAPHS -->
+    <div class="charts-section">
+        <h3><i class="fa-solid fa-chart-line"></i> Health Report – Last 7 Days</h3>
+        <div class="chart-grid">
+            <div class="chart-box"><canvas id="hrChart"></canvas></div>
+            <div class="chart-box"><canvas id="bpChart"></canvas></div>
+            <div class="chart-box"><canvas id="oxyChart"></canvas></div>
+            <div class="chart-box"><canvas id="tempChart"></canvas></div>
+        </div>
+    </div>
+
+    <button class="back-btn" onclick="history.back()">← Back</button>
+</div>
+
+<script src="patientDetails.js"></script>
+</body>
+</html>
